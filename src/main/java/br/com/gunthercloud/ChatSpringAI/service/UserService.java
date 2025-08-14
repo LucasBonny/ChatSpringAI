@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.gunthercloud.ChatSpringAI.entities.User;
+import br.com.gunthercloud.ChatSpringAI.entities.dto.UserDTO;
+import br.com.gunthercloud.ChatSpringAI.mapper.UserMapper;
 import br.com.gunthercloud.ChatSpringAI.repository.UserRepository;
 
 @Service
@@ -14,16 +16,26 @@ public class UserService {
 	@Autowired
 	private UserRepository repository;
 	
-	public List<User> findAll() {
-		return repository.findAll();
+	public List<UserDTO> findAll() {
+		List<UserDTO> users = repository.findAll().stream().map(UserMapper::toDTO).toList();		
+		return users;
 	}
 
-	public User findById(Long id) {
-		return repository.findById(id).get();
+	public UserDTO findById(Long id) {
+		return UserMapper.toDTO(repository.findById(id).get());
 	}
 	
-	public User createUser(User user) {
+	public UserDTO createUser(User user) {
 		user.setId(null);
-		return repository.save(user);
+		return UserMapper.toDTO(repository.save(user));
+	}
+
+	public UserDTO modifyUser(Long id, User user) {
+		user.setId(id);
+		return UserMapper.toDTO(repository.save(user));
+	}
+
+	public void removeUser(Long id) {
+		repository.deleteById(id);
 	}
 }
