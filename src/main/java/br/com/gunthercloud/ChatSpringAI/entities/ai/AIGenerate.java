@@ -2,6 +2,8 @@ package br.com.gunthercloud.ChatSpringAI.entities.ai;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class AIGenerate extends AIModel {
 	
 	private String response;
@@ -28,6 +30,7 @@ public class AIGenerate extends AIModel {
 		this.response = response;
 	}
 
+	@JsonIgnore
 	public List<Object> getContext() {
 		return context;
 	}

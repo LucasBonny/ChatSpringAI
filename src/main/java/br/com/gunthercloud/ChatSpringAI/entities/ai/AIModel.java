@@ -1,5 +1,7 @@
 package br.com.gunthercloud.ChatSpringAI.entities.ai;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class AIModel {
 	
 	private String model;
@@ -40,6 +42,7 @@ public class AIModel {
 		this.model = model;
 	}
 
+	@JsonIgnore
 	public String getCreated_at() {
 		return created_at;
 	}
@@ -48,6 +51,7 @@ public class AIModel {
 		this.created_at = created_at;
 	}
 
+	@JsonIgnore
 	public String getDone_reason() {
 		return done_reason;
 	}
@@ -56,6 +60,7 @@ public class AIModel {
 		this.done_reason = done_reason;
 	}
 
+	@JsonIgnore
 	public boolean isDone() {
 		return done;
 	}
@@ -64,6 +69,7 @@ public class AIModel {
 		this.done = done;
 	}
 
+	@JsonIgnore
 	public long getTotal_duration() {
 		return total_duration;
 	}
@@ -72,6 +78,7 @@ public class AIModel {
 		this.total_duration = total_duration;
 	}
 
+	@JsonIgnore
 	public long getLoad_duration() {
 		return load_duration;
 	}
@@ -80,6 +87,7 @@ public class AIModel {
 		this.load_duration = load_duration;
 	}
 
+	@JsonIgnore
 	public long getPrompt_eval_count() {
 		return prompt_eval_count;
 	}
@@ -88,6 +96,7 @@ public class AIModel {
 		this.prompt_eval_count = prompt_eval_count;
 	}
 
+	@JsonIgnore
 	public long getPrompt_eval_duration() {
 		return prompt_eval_duration;
 	}
@@ -96,6 +105,7 @@ public class AIModel {
 		this.prompt_eval_duration = prompt_eval_duration;
 	}
 
+	@JsonIgnore
 	public long getEval_count() {
 		return eval_count;
 	}
@@ -103,7 +113,8 @@ public class AIModel {
 	public void setEval_count(long eval_count) {
 		this.eval_count = eval_count;
 	}
-
+	
+	@JsonIgnore
 	public long getEval_duration() {
 		return eval_duration;
 	}
