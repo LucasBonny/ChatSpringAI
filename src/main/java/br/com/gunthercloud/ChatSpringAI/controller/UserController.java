@@ -2,7 +2,6 @@ package br.com.gunthercloud.ChatSpringAI.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +20,11 @@ import br.com.gunthercloud.ChatSpringAI.service.UserService;
 @RequestMapping(value = "/api/user")
 public class UserController {
 	
-	@Autowired
 	private UserService service;
+	
+	public UserController (UserService service) {
+		this.service = service;
+	}
 	
 	@GetMapping
 	public ResponseEntity<List<UserDTO>> findAll() {
